@@ -7,7 +7,7 @@ class BitUtils:
             secrets_file.close()
             return self.secrets
     def buildCommandLineArgument(self):
-        parser=ArgumentParser( prog='PROG', usage="usage: %prog [options] filename", version="%prog 1.0")
+        parser=ArgumentParser( prog='trade-bittrex', usage="usage: %(prog)s [options] filename", version="%(prog)s 1.0")
         parser.add_argument("-o", "--operation",
                           action="store",
                           default="getbalance",
@@ -18,7 +18,11 @@ class BitUtils:
                           default="BTC",
                           dest="currency",
                           help="Coin name")
-
+        parser.add_argument("-m", "--market",
+                            action="store",
+                            default="BTC-ETH",
+                            dest="market",
+                            help="Market name  Eg BTC-ETH")
         args = parser.parse_args()
         #print options.currency
         return args
